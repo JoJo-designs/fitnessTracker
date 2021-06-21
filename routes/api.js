@@ -5,7 +5,6 @@ const Exercises = require("../models/exercises.js");
 // Attempt to get data from the database
 router.get('/api/data', (req, res) => {
     Workout.find({})
-    .sort({ date: 1})
     .then(Workouts => {
         res.json(Workouts)
     })
