@@ -35,6 +35,7 @@ router.get("/api/workouts", (req, res) => {
   ])
     .then(workout => {
       res.json(workout);
+      res.window.location("exercise.html")
     })
     .catch(err => {
       res.status(400).json(err);
@@ -52,6 +53,7 @@ router.put("/api/workouts/", ({body}, res) => {
   Workout.create(body)
   .then(workout => {
     res.json(workout);
+    res.window.location("exercise.html")
   })
   .catch(err => {
     res.status(400).json(err);
