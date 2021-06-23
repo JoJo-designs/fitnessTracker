@@ -28,7 +28,7 @@ router.get("/stats", function (req, res) {
 
 //   return json[json.length - 1];
 // },
-// Attempt to get data from the database
+
 router.get("/api/workouts", (req, res) => {
   Workout.aggregate([
     {
@@ -43,7 +43,6 @@ router.get("/api/workouts", (req, res) => {
   ])
     .then(workout => {
       res.json(workout);
-      res.window.location("exercise.html")
     })
     .catch(err => {
       res.status(400).json(err);
@@ -61,7 +60,6 @@ router.put("/api/workouts/", ({body}, res) => {
   Workout.create(body)
   .then(workout => {
     res.json(workout);
-    res.window.location("exercise.html")
   })
   .catch(err => {
     res.status(400).json(err);
@@ -80,6 +78,20 @@ router.put("/api/workouts/", ({body}, res) => {
 
 //   return json;
 // },
+
+router.post("/api/workouts", ({ body }, res) => {
+  Workout.create(body)
+  .then(workout => {
+    res.json(workout);
+  })
+  .catch(err => {
+    res.status(400).json(err);
+  });
+});
+
+
+
+
 
 // async getWorkoutsInRange() {
 //   const res = await fetch(`/api/workouts/range`);
