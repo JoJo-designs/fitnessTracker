@@ -30,6 +30,10 @@ const ExercisesSchema = new Schema({
     type: Number,
     trim: true,
   },
+  distance: {
+    type: Number,
+    trim: true,
+  },
 
 });
 

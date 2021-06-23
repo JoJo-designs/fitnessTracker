@@ -100,4 +100,22 @@ router.post("/api/workouts", ({ body }, res) => {
 //   return json;
 // },
 
+router.get("/api/workouts/range", (req, res) => {
+  Workout.aggregate.addFields([
+    {
+      newfield: {
+        totalRange: {
+          $sum: '$exercises.distance',
+        },
+      },
+    },
+  ])
+  .then(workout => {
+    res.json(workout);
+  })
+  .catch(err => {
+    res.status(400).json(err);
+  })
+})
+
 module.exports = router;
