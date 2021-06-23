@@ -1,8 +1,16 @@
 const router = require("express").Router();
 const Workout = require("../models/workout.js");
 
-// if you get lost, look at api.js in public folder
+// router to each html page I think.
+router.get("/exercise", function (req, res) {
+  res.redirect('exercise.html')
+})
 
+router.get("/stats", function (req, res) {
+  res.redirect('stats.html')
+})
+
+// if you get lost, look at api.js in public folder
 /**
  * make route for each of these calls and delete commented
  * code as you go
