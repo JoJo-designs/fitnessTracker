@@ -56,7 +56,7 @@ router.get("/api/workouts", (req, res) => {
 //   body: JSON.stringify(data)
 // });
 
-router.put("/api/workouts/", ({body}, res) => {
+router.put("/api/workouts/:id", ({body}, res) => {
   Workout.create(body)
   .then(workout => {
     res.json(workout);
