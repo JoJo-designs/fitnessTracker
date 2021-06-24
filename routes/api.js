@@ -59,7 +59,7 @@ router.put("/api/workouts/:id", ({body}, res) => {
     sets: body.sets
     }
     Workout.findOneAndUpdate(
-      { id: body.id },
+      { _id: body.id },
       { $push: { exercise: exercisesOdj } },
       function (err, success) {
         if (err) {
@@ -81,7 +81,6 @@ router.post("/api/workouts", ({ body }, res) => {
     res.status(400).json(err);
   });
 });
-
 
 // doesn't work.
 router.get("/api/workouts/range", (req, res) => {
