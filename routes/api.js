@@ -1,5 +1,7 @@
 const router = require("express").Router();
+const { db } = require("../models/workout.js");
 const Workout = require("../models/workout.js");
+const Exercise = require("../models/exercises.js");
 
 // router to each html page I think.
 router.get("/exercise", function (req, res) {
@@ -39,15 +41,34 @@ router.get("/api/workouts", (req, res) => {
 });
 
 
-// adds a new workout to the table but i need it to update just one
+// adds a new workout to the table but i need it to add a new exercises to just one
 router.put("/api/workouts/:id", ({body}, res) => {
-  Workout.update(body)
-  .then(workouts => {
-    res.json(workouts);
-  })
-  .catch(err => {
-    res.status(400).json(err);
-  });
+  // Workout.updateOne(body)
+  // .then(workouts => {
+  //   res.json(workouts);
+  // })
+  // .catch(err => {
+  //   res.status(400).json(err);
+  // });
+  let exercisesOdj = { 
+    type: body.type,
+    name: body.name, 
+    duration: body.duration,
+    weight: body.weight,
+    reps: body.reps,
+    sets: body.sets
+    }
+    Workout.findOneAndUpdate(
+      { id: body.id },
+      { $push: { exercise: exercisesOdj } },
+      function (err, success) {
+        if (err) {
+          console.log(err)
+        } else {
+          res.json(success)
+        }
+      }
+    ) 
 });
 
 // adds a new workout. 
@@ -62,6 +83,7 @@ router.post("/api/workouts", ({ body }, res) => {
 });
 
 
+// doesn't work.
 router.get("/api/workouts/range", (req, res) => {
   Workout.aggregate([
     {
