@@ -16,19 +16,8 @@ router.get("/stats", function (req, res) {
  * code as you go
  */
 
-// THIS ONE FIRST
-// async getLastWorkout() {
-//   let res;
-//   try {
-//     res = await fetch("/api/workouts");
-//   } catch (err) {
-//     console.log(err)
-//   }
-//   const json = await res.json();
 
-//   return json[json.length - 1];
-// },
-
+// gets all the data with the duration field added to the response.
 router.get("/api/workouts", (req, res) => {
   Workout.aggregate([
     {
@@ -41,8 +30,8 @@ router.get("/api/workouts", (req, res) => {
       },
     },
   ])
-    .then(workout => {
-      res.json(workout);
+    .then(workouts => {
+      res.json(workouts);
     })
     .catch(err => {
       res.status(400).json(err);
@@ -50,39 +39,22 @@ router.get("/api/workouts", (req, res) => {
 });
 
 
-// const res = await fetch("/api/workouts/" + id, {
-//   method: "PUT",
-//   headers: { "Content-Type": "application/json" },
-//   body: JSON.stringify(data)
-// });
-
+// adds a new workout to the table but i need it to update just one
 router.put("/api/workouts/:id", ({body}, res) => {
-  Workout.create(body)
-  .then(workout => {
-    res.json(workout);
+  Workout.update(body)
+  .then(workouts => {
+    res.json(workouts);
   })
   .catch(err => {
     res.status(400).json(err);
   });
 });
 
-
-// async createWorkout(data = {}) {
-//   const res = await fetch("/api/workouts", {
-//     method: "POST",
-//     body: JSON.stringify(data),
-//     headers: { "Content-Type": "application/json" }
-//   });
-
-//   const json = await res.json();
-
-//   return json;
-// },
-
+// adds a new workout. 
 router.post("/api/workouts", ({ body }, res) => {
   Workout.create(body)
-  .then(workout => {
-    res.json(workout);
+  .then(workouts => {
+    res.json(workouts);
   })
   .catch(err => {
     res.status(400).json(err);
@@ -90,28 +62,18 @@ router.post("/api/workouts", ({ body }, res) => {
 });
 
 
-
-
-
-// async getWorkoutsInRange() {
-//   const res = await fetch(`/api/workouts/range`);
-//   const json = await res.json();
-
-//   return json;
-// },
-
 router.get("/api/workouts/range", (req, res) => {
-  Workout.aggregate.addFields([
+  Workout.aggregate([
     {
-      newfield: {
+      $addfields: {
         totalRange: {
           $sum: '$exercises.distance',
         },
       },
     },
   ])
-  .then(workout => {
-    res.json(workout);
+  .then(workouts => {
+    res.json(workouts);
   })
   .catch(err => {
     res.status(400).json(err);
