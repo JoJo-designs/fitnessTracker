@@ -41,34 +41,21 @@ router.get("/api/workouts", (req, res) => {
 });
 
 
-// adds a new workout to the table but i need it to add a new exercises to just one
-router.put("/api/workouts/:id", ({body}, res) => {
-  // Workout.updateOne(body)
-  // .then(workouts => {
-  //   res.json(workouts);
-  // })
-  // .catch(err => {
-  //   res.status(400).json(err);
-  // });
-  let exercisesOdj = { 
-    type: body.type,
-    name: body.name, 
-    duration: body.duration,
-    weight: body.weight,
-    reps: body.reps,
-    sets: body.sets
-    }
-    Workout.findOneAndUpdate(
-      { _id: body.id },
-      { $push: { exercise: exercisesOdj } },
-      function (err, success) {
-        if (err) {
-          console.log(err)
-        } else {
-          res.json(success)
-        }
-      }
-    ) 
+
+router.put("/api/workouts/:id", ({body, params}, res) => {
+    // ADD EXERCISE WORKING AS OF 6/24
+  Workout.findByIdAndUpdate(
+    params.id,
+    { $push: { exercises: body } },
+    { new: true, runValidators: true }
+  )
+    .then((data) => {
+      console.log(data)
+      res.json(data)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 });
 
 // adds a new workout. 
