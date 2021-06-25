@@ -71,15 +71,31 @@ router.post("/api/workouts", ({ body }, res) => {
 
 // doesn't work.
 router.get("/api/workouts/range", (req, res) => {
+  // Workout.aggregate([
+  //   {
+  //     $addfields: {
+  //       totalRange: {
+  //         $sum: '$exercises.distance',
+  //       },
+  //     },
+  //   },
+  // ])
+  // .then(workouts => {
+  //   res.json(workouts);
+  // })
+  // .catch(err => {
+  //   res.status(400).json(err);
+  // })
   Workout.aggregate([
     {
-      $addfields: {
-        totalRange: {
-          $sum: '$exercises.distance',
+      $addFields: {
+        totalDuration: {
+          $sum: 'exercises.duration',
         },
       },
     },
   ])
+  .sort({ date: -1 })
   .then(workouts => {
     res.json(workouts);
   })
