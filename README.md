@@ -1,7 +1,7 @@
-# fitnessTracker
+# Fitness Tracker App
 
 ### Description
-This tech-dashboard allows users to sign up and log in. Users can create, edit posts, and view the posts from other people.
+Fitness Tracker allows a user to track workouts over a several day period. Users can create new workouts add exercise to them and view the total weight and time for the pervious days.
 
 [live Version](https://https://coolfitness.herokuapp.com/)
 [Git Hub repo](https://github.com/JoJo-designs/fitnessTracker)
@@ -11,17 +11,12 @@ This tech-dashboard allows users to sign up and log in. Users can create, edit p
 
   [Usage](#Usage)
 
-  [Missing Component](#Missing_Components)
-
   [License](#License)
 
   [Questions](#Questions)
 
   ### Usage
-  This program is easy to use. Create a account using an email, password, and create a user name. log in using the email and password. When logged in the user will be taken to their dashboard. On the dashboard users can see all of their post and make new ones. clicking on a post will bring the user to a page where they can edit their post. Users can log out when they are done.
-
-  ### Missing Components
-  The program is missing some of its intended functionality. Currently users cannot comment on other peoples post. Users cannot delete post that they made.
+  Fitness tracker is easy to use. Navigate to the app in the browser then click to add a new workout. Selected the type of exercise between cardio and resistance then fill in the data including a field for time, reps, sets and activity. These field change based on they selected type. Click Add Exercise to another exercise or complete to finish the workout. Users can view the workout by clicking on dashboard. 
 
   ### License
   ##### Type of license CC0
