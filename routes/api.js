@@ -38,6 +38,7 @@ router.get("/api/workouts", (req, res) => {
 
 router.put("/api/workouts/:id", ({body, params}, res) => {
     // ADD EXERCISE WORKING AS OF 6/24
+  console.log(body)
   Workout.findByIdAndUpdate(
     params.id,
     { $push: { exercises: body } },
@@ -69,13 +70,14 @@ router.get("/api/workouts/range", (req, res) => {
     {
       $addFields: {
         totalDuration: {
-          $sum: 'exercises.duration',
+          $sum: '$exercises.duration',
         },
       },
     },
   ])
   .sort({ date: -1 })
   .then(workouts => {
+    console.log(workouts)
     res.json(workouts);
   })
   .catch(err => {
