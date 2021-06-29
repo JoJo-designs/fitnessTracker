@@ -57,9 +57,11 @@ router.put("/api/workouts/:id", ({body, params}, res) => {
 router.post("/api/workouts", ({ body }, res) => {
   Workout.create(body)
   .then(workouts => {
+    console.log(workouts);
     res.json(workouts);
   })
   .catch(err => {
+    console.log(err);
     res.status(400).json(err);
   });
 });
