@@ -66,7 +66,7 @@ router.post("/api/workouts", ({ body }, res) => {
   });
 });
 
-// doesn't work.
+
 router.get("/api/workouts/range", (req, res) => {
   Workout.aggregate([
     {
