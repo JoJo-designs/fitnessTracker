@@ -1,9 +1,9 @@
 # Fitness Tracker App
 
 ### Description
-Fitness Tracker allows a user to track workouts over a several day period. Users can create new workouts add exercise to them and view the total weight and time for the pervious days.
+Fitness Tracker allows a user to track workouts over a several day period. Users can create new workouts add exercise to them then view the total weight and time for the pervious workouts.
 
-[live Version](https://https://coolfitness.herokuapp.com/)
+[live Version](https://cool-fitness.herokuapp.com/)
 [Git Hub repo](https://github.com/JoJo-designs/fitnessTracker)
 
   ### Table of Content
@@ -11,12 +11,19 @@ Fitness Tracker allows a user to track workouts over a several day period. Users
 
   [Usage](#Usage)
 
+  [Images](#Image)
+
   [License](#License)
 
   [Questions](#Questions)
 
   ### Usage
-  Fitness tracker is easy to use. Navigate to the app in the browser then click to add a new workout. Selected the type of exercise between cardio and resistance then fill in the data including a field for time, reps, sets and activity. These field change based on they selected type. Click Add Exercise to another exercise or complete to finish the workout. Users can view the workout by clicking on dashboard. 
+  Fitness tracker is easy to use. Navigate to the app in the browser then click new workout. Selected the type of exercise between cardio and resistance then fill in the data including a field for time, reps, sets and activity. These field change based on type of exercise selected. Click Add Exercise to another exercise or complete to finish the workout. Users can view the workout by clicking on dashboard. 
+
+  ### Images
+  ![The landing page](/images/image1.jpg?raw=true "Landing Page")
+  ![workouts](/images/image2.jpg?raw=true "adding workout")
+  ![dashboard](/images/image3.jpg?raw=true "dashboard")
 
   ### License
   ##### Type of license CC0
